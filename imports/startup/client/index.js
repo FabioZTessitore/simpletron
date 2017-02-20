@@ -1,1 +1,1 @@
-console.log('client started');
+import '../../ui/templates/memory/memory.js';
