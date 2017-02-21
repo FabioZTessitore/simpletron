@@ -1,4 +1,4 @@
-class Memory {
+/*class Memory {
   constructor (size) {
     this.size = size;
     this.reset();
@@ -14,3 +14,4 @@ class Memory {
 }
 
 export default Memory;
+*/

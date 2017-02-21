@@ -1,0 +1,28 @@
+<template name="Header">
+  <nav>
+    <div class="nav-wrapper">
+      {{#if currentUser}}
+      <a class="brand-logo" href="{{pathFor 'Home'}}">Simpletron</a>
+      {{else}}
+      <a class="brand-logo" href="{{pathFor 'Splash'}}">Simpletron</a>
+      {{/if}}
+      <a href="#" data-activates="my-nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+      <ul class="right hide-on-med-and-down">
+        {{#if currentUser}}
+          <li><a href="#" class="logout">Logout</a></li>
+        {{else}}
+          <li><a href="{{pathFor 'Signin'}}">Sign in</a></li>
+          <li><a href="{{pathFor 'Signup'}}">Sign up</a></li>
+        {{/if}}
+      </ul>
+      <ul id="my-nav-mobile" class="side-nav">
+        {{#if currentUser}}
+          <li><a href="#" class="logout">Logout</a></li>
+        {{else}}
+          <li><a href="{{pathFor 'Signin'}}">Sign in</a></li>
+          <li><a href="{{pathFor 'Signup'}}">Sign up</a></li>
+        {{/if}}
+      </ul>
+    </div>
+  </nav>
+</template>

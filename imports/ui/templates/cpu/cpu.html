@@ -1,5 +1,6 @@
 <template name="Cpu">
   <h4>CPU is here</h4>
+  {{#each theCpu}}
   <div class="row">
     <div class="col s3">Accumulator:</div>
     <div class="col s9">{{accumulator}}</div>
@@ -20,4 +21,5 @@
     <div class="col s3">Operand:</div>
     <div class="col s9">{{operand}}</div>
   </div>
+  {{/each}}
 </template>

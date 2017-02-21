@@ -1,0 +1,38 @@
+<template name="Signup">
+  <div class="card blue-grey darken-1">
+    <div class="card-content white-text">
+      <h4 class="center-align">Join Simpletron</h4>
+    </div>
+  </div>
+
+  <form>
+    <div class="row">
+      <div class="input-field col s12  {{errorClass 'username'}}">
+        <input type="text" class="validate" id="username" name="username">
+        <span class="help-block">{{errorMessage 'username'}}</span>
+        <label for="username">Username</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 {{errorClass 'password1'}}">
+        <input type="password" class="form-control" id="password1" name="password1">
+        <span class="help-block">{{errorMessage 'password1'}}</span>
+        <label for="password1">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 {{errorClass 'password2'}}">
+        <input type="password" class="form-control" id="password2" name="password2">
+        <span class="help-block">{{errorMessage 'password2'}}</span>
+        <label for="password2">Retype Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12 {{errorClass 'passwordMatch'}}">
+        <span class="help-block">{{errorMessage 'passwordMatch'}}</span>
+      </div>
+    </div>
+
+    <button class="btn waves-effect waves-light" type="submit">Signup</button>
+  </form>
+</template>

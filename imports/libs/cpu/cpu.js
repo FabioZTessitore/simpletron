@@ -1,4 +1,4 @@
-import Memory from '../memory/memory.js';
+/*import Memory from '../memory/memory.js';
 
 const READ = 10;
 const WRITE = 11;
@@ -76,3 +76,4 @@ class CPU {
 }
 
 export default CPU;
+*/

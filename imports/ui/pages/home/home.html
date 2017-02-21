@@ -1,0 +1,40 @@
+<template name="Home">
+  <div class="container">
+    <div class="row">
+      <div class="col m7">
+        <pre class="text-flow">*** Welcome to Simpletron! ***
+*** Please enter your program one istruction ***
+*** (or data word) at a time. I will type the ***
+*** location number and a question mark (?). ***
+*** You the type the word for that location. ***
+*** Type the sentinel -99999 to stop entering ***
+*** your program. ***</pre>
+      </div>
+      <div class="col offset-m2 m3">
+        <pre class="text-flow">READ 10
+WRITE 11
+
+LOAD 20
+STORE 1
+
+ADD 30
+SUB 31
+DIV 32
+MUL 3
+
+BRANCH 40
+BRANCHNEG 41
+BRANCHZERO 42
+HALT 43</pre>
+      </div>
+    </div>
+    <div class="row">
+    {{#if Template.subscriptionsReady}}
+      {{> Cpu}}
+      {{> Memory}}
+    {{else}}
+      {{> spinner}}
+    {{/if}}
+    </div>
+  </div>
+</template>
