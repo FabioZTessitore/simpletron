@@ -1,7 +1,18 @@
 <template name="Memory">
-  <h4>Memory is here</h4>
+  <h4 class="center-align">Memory {{#with memory}}{{size}}{{/with}}</h4>
 
   <div class="row">
-    {{> tabular table=TabularTables.Memory class="table"}}
+    {{#if Template.subscriptionsReady}}
+
+      {{#each memorycell}}
+      <div class="col s1">
+        <label for="{{cell index}}">{{index}}</label>
+        <input id="{{cell index}}" type="text" value="{{cellformat value}}">
+      </div>
+      {{/each}}
+
+    {{else}}
+      {{> spinner}}
+    {{/if}}
   </div>
 </template>

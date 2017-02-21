@@ -13,16 +13,6 @@ const MemorySchema = new SimpleSchema({
     type: Number,
     defaultValue: 100,
   },
-
-  m: {
-    type: Array,
-    /*default: function () {
-      return Array(this.size).fill(0);
-    },*/
-  },
-  'm.$': {
-    type: Number,
-  },
 });
 
 Memory.attachSchema(MemorySchema);

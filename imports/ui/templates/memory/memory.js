@@ -1,39 +1,33 @@
 import { Template } from 'meteor/templating';
 
-import Tabular from 'meteor/aldeed:tabular';
-
-import { Memory } from '../../../api/memory/memory';
+import { MemoryCell } from '../../../api/memory-cell/memory-cell.js';
+import { Memory } from '../../../api/memory/memory.js';
 
 import './memory.html';
-
-new Tabular.Table({
-  name: "Memory",
-  collection: Memory,
-  columns: [
-    //{data: "title", title: "Title"},
-    //{data: "author", title: "Author"},
-    //{data: "copies", title: "Copies Available"},
-    /*{
-      data: "lastCheckedOut",
-      title: "Last Checkout",
-      render: function (val, type, doc) {
-        if (val instanceof Date) {
-          return moment(val).calendar();
-        } else {
-          return "Never";
-        }
-      }
-    },*/
-    /*{data: "summary", title: "Summary"},
-    {
-      tmpl: Meteor.isClient && Template.bookCheckOutCell
-    }*/
-  ]
-});
 
 Template.Memory.onCreated( function () {
   const _this = this;
   this.autorun( function () {
     _this.subscribe('memory');
+    _this.subscribe('memorycell');
   });
+});
+
+Template.Memory.helpers({
+  memory () {
+    //console.log(Memory.findOne({ userId: Meteor.userId() }));
+    return Memory.findOne({ userId: Meteor.userId() });
+  },
+
+  memorycell () {
+    return MemoryCell.find({ userId: Meteor.userId() }, { sort: { index: 1 } });
+  },
+
+  cell: function (index) {
+    return "cell"+(index);
+  },
+
+  cellformat: function (value) {
+    return ("0000"+value).substr(-4, 4);
+  },
 });

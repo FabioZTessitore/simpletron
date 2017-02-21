@@ -11,30 +11,21 @@
 *** your program. ***</pre>
       </div>
       <div class="col offset-m2 m3">
-        <pre class="text-flow">READ 10
-WRITE 11
-
-LOAD 20
-STORE 1
+        <pre class="text-flow"><small>READ 10       BRANCH 40
+WRITE 11      BRANCHNEG 41
+              BRANCHZERO 42
+LOAD 20       HALT 43
+STORE 21
 
 ADD 30
 SUB 31
 DIV 32
-MUL 3
-
-BRANCH 40
-BRANCHNEG 41
-BRANCHZERO 42
-HALT 43</pre>
+MUL 33</small></pre>
       </div>
     </div>
     <div class="row">
-    {{#if Template.subscriptionsReady}}
-      {{> Cpu}}
-      {{> Memory}}
-    {{else}}
-      {{> spinner}}
-    {{/if}}
+      <div class="col m3">{{> Cpu}}</div>
+      <div class="col m9">{{> Memory}}</div>
     </div>
   </div>
 </template>
