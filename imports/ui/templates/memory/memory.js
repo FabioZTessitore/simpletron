@@ -1,8 +1,34 @@
+import Tabular from 'meteor/aldeed:tabular';
 import { Template } from 'meteor/templating';
 
 import Memory from '../../../libs/memory/memory';
 
 import './memory.html';
+
+new Tabular.Table({
+  name: "Memory",
+  //collection: Books,
+  columns: [
+    //{data: "title", title: "Title"},
+    //{data: "author", title: "Author"},
+    //{data: "copies", title: "Copies Available"},
+    /*{
+      data: "lastCheckedOut",
+      title: "Last Checkout",
+      render: function (val, type, doc) {
+        if (val instanceof Date) {
+          return moment(val).calendar();
+        } else {
+          return "Never";
+        }
+      }
+    },*/
+    /*{data: "summary", title: "Summary"},
+    {
+      tmpl: Meteor.isClient && Template.bookCheckOutCell
+    }*/
+  ]
+});
 
 Template.Memory.onCreated( function () {
   const m = new Memory(100);
