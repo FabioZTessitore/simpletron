@@ -1,7 +1,8 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
 
-export const CPU = new Mongo.Collection('cpu');
+export const CPU = new Mongo.Collection(null);
 
 const CPUSchema = new SimpleSchema({
   userId: {
@@ -36,3 +37,24 @@ const CPUSchema = new SimpleSchema({
 });
 
 CPU.attachSchema(CPUSchema);
+
+CPU.cpuCreate = function (userId) {
+  const cpuAttributes = {
+    userId,
+  };
+
+  let cpuId = CPU.findOne({ userId: Meteor.userId() });
+  if (cpuId) {
+    CPU.remove(cpuId);
+  }
+
+  cpuId = CPU.insert(cpuAttributes, function (err, result) {
+    if (err) {
+      throw new Meteor.Error(err.reason);
+    }
+  });
+
+  return {
+    _id: cpuId,
+  };
+}

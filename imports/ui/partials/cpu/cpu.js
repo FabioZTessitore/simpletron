@@ -1,14 +1,11 @@
 import { Template } from 'meteor/templating';
 
-import { CPU } from '../../../api/cpu/cpu.js';
+import { CPU } from './client/cpu.js';
 
 import './cpu.html';
 
 Template.Cpu.onCreated( function () {
-  const _this = this;
-  this.autorun( function () {
-    _this.subscribe('cpu');
-  });
+  CPU.cpuCreate(Meteor.userId());
 });
 
 Template.Cpu.helpers({

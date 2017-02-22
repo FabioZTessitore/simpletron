@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor';
 import { Accounts } from 'meteor/accounts-base';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
-import { CPU } from '../cpu/cpu.js';
 import { Memory } from '../memory/memory.js';
+
+//import { CPU } from '../../ui/partials/cpu/client/cpu.js';
 
 Meteor.methods({
   'users.signup': function (userAttributes) {
@@ -19,7 +20,8 @@ Meteor.methods({
     }
 
     const userId = Accounts.createUser(userAttributes);
-    Meteor.call("cpu.create", userId);
+    //Meteor.call("cpu.create", userId);
+    //CPU.cpuCreate(userId);
     Meteor.call("memory.create", userId);
 
     return {

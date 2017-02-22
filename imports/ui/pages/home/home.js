@@ -1,7 +1,7 @@
 import { Template } from 'meteor/templating';
 
-import '../../templates/cpu/cpu.js';
-import '../../templates/memory/memory.js';
+import '../../partials/cpu/cpu.js';
+import '../../partials/memory/memory.js';
 import './home.html';
 
 Template.Home.onCreated( function () {
