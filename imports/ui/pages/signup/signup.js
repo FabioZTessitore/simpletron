@@ -10,11 +10,6 @@ Template.Signup.onCreated(function () {
 });
 
 Template.Signup.helpers({
-  errorClass: function (field) {
-    const instance = Template.instance();
-    return !!instance.errorSignup.get(field) ? 'has-error' : '';
-  },
-
   errorMessage: function (field) {
     const instance = Template.instance();
     return instance.errorSignup.get(field);

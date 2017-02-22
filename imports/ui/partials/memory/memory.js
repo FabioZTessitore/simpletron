@@ -1,21 +1,16 @@
 import { Template } from 'meteor/templating';
 
-import { MemoryCell } from '../../../api/memory-cell/memory-cell.js';
-import { Memory } from '../../../api/memory/memory.js';
+import { MemoryCell } from './client/memory_cell.js';
+import { Memory } from './client/memory.js';
 
 import './memory.html';
 
 Template.Memory.onCreated( function () {
-  const _this = this;
-  this.autorun( function () {
-    _this.subscribe('memory');
-    _this.subscribe('memorycell');
-  });
+  Memory.create(Meteor.userId());
 });
 
 Template.Memory.helpers({
   memory () {
-    //console.log(Memory.findOne({ userId: Meteor.userId() }));
     return Memory.findOne({ userId: Meteor.userId() });
   },
 
@@ -28,6 +23,11 @@ Template.Memory.helpers({
   },
 
   cellformat: function (value) {
-    return ("0000"+value).substr(-4, 4);
+    let sign = '+';
+    if (value < 0) {
+      sign = '-';
+      value = -value;
+    }
+    return sign+("0000"+value).substr(-4, 4);
   },
 });
