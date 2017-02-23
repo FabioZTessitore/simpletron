@@ -34,13 +34,15 @@ Template.Cpu.helpers({
 });
 
 Template.Cpu.events({
-  "click .resetIC": function (e) {
+  "click .resetIC": function (e, instance) {
     e.preventDefault();
 
     const userId = Meteor.userId();
     let cpu = CPU.findOne({ userId });
     cpu.instructionCounter = 0;
     CPU.update(cpu._id, { $set: cpu });
+
+    instance.step.set('fetch');
   },
 
   "click .step": function (e, instance) {
