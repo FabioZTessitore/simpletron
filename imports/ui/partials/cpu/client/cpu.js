@@ -1,8 +1,8 @@
 import { Meteor } from 'meteor/meteor';
-import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Ground } from 'meteor/ground:db';
 
-export const CPU = new Mongo.Collection(null);
+export const CPU = Ground.Collection('cpu', {connection: null});
 
 const CPUSchema = new SimpleSchema({
   userId: {

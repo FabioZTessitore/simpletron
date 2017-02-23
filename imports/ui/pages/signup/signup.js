@@ -59,8 +59,9 @@ Template.Signup.events({
         return;
       }
 
-      Meteor.loginWithPassword(userAttributes.username, userAttributes.password1);
-      FlowRouter.go('Home');
+      Meteor.loginWithPassword(userAttributes.username, userAttributes.password1, function () {
+        FlowRouter.go('Home');
+      });
     });
   },
 });

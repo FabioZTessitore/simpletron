@@ -1,9 +1,9 @@
-import { Mongo } from 'meteor/mongo';
 import { SimpleSchema } from 'meteor/aldeed:simple-schema';
+import { Ground } from 'meteor/ground:db';
 
 import { MemoryCell } from './memory_cell.js';
 
-export const Memory = new Mongo.Collection(null);
+export const Memory = Ground.Collection('memory', {connection: null});
 
 const MemorySchema = new SimpleSchema({
   userId: {
