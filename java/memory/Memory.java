@@ -5,10 +5,12 @@ import java.util.Arrays;
 public class Memory
 {
   private int m[];
+  private int size;
 
   public Memory(int size)
   {
-    this.m = new int[size];
+    this.size = size;
+    this.m = new int[this.size];
     Arrays.fill(this.m, 0);
   }
 
@@ -26,14 +28,14 @@ public class Memory
   {
     System.out.println("MEMORY:");
 
-    System.out.print("  ");
+    System.out.print("    ");
     for (int col = 0; col < 10; col++) {
       System.out.printf(" %5d", col);
     }
     System.out.print("\n");
 
-    for (int row = 0; row < 10; row++) {
-      System.out.printf("%2d", row*10);
+    for (int row = 0; row < this.size/10; row++) {
+      System.out.printf("%04d", row*10);
       for (int col = 0; col < 10; col++) {
         System.out.printf(" %+05d", this.m[row*10+col]);
       }

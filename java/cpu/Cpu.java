@@ -86,6 +86,12 @@ public class Cpu
       case OpCodes.DIV:
         this.accumulator /= this.memRef.get(this.operand);
         break;
+      case OpCodes.REMAINDER:
+        this.accumulator %= this.memRef.get(this.operand);
+        break;
+      case OpCodes.IPOW:
+        this.accumulator = this.int_pow(this.accumulator, this.memRef.get(this.operand));
+        break;
       case OpCodes.BRANCH:
         this.instructionCounter = this.operand;
         break;
@@ -106,5 +112,17 @@ public class Cpu
     }
 
     return halt;
+  }
+
+  private int int_pow(int a, int b)
+  {
+    return int_pow_helper(a, b, 1);
+  }
+
+  private int int_pow_helper(int a, int b, int result)
+  {
+    if (b == 0) return 1;
+    else if (b == 1) return a*result;
+    else return int_pow_helper(a, b-1, a*result);
   }
 };
