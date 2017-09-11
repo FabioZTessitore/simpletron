@@ -4,24 +4,26 @@ import java.util.Arrays;
 
 public class Memory
 {
-  private static final int SIZE = 100;
-
   private int m[];
 
-  public Memory() {
-    this.m = new int[SIZE];
+  public Memory(int size)
+  {
+    this.m = new int[size];
     Arrays.fill(this.m, 0);
   }
 
-  public int get(int index) {
+  public int get(int index)
+  {
     return this.m[index];
   }
 
-  public void set(int index, int value) {
+  public void set(int index, int value)
+  {
     this.m[index] = value;
   }
 
-  public void dump() {
+  public void dump()
+  {
     System.out.println("MEMORY:");
 
     System.out.print("  ");

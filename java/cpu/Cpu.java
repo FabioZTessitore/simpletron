@@ -1,7 +1,6 @@
 package cpu;
 
-import java.util.Scanner;
-
+import simpletron.Simpletron;
 import cpu.OpCodes;
 import memory.Memory;
 
@@ -13,46 +12,33 @@ public class Cpu
   private int instructionCounter;
   private int instructionRegister;
 
+  private Simpletron simpletronRef;
   private Memory memRef;
 
-  private Scanner keyboard;
-
-  public Cpu(Memory m, Scanner keyboard) {
+  public Cpu(Simpletron simpletron, Memory memRef)
+  {
     this.accumulator = 0;
     this.opcode = 0;
     this.operand = 0;
     this.instructionCounter = 0;
     this.instructionRegister = 0;
 
-    this.memRef = m;
-
-    this.keyboard = keyboard;
+    this.simpletronRef = simpletron;
+    this.memRef = memRef;
   }
 
-  public void dump() {
+  public void dump()
+  {
     System.out.println("\n\nREGISTERS:");
     System.out.printf("accumulator\t\t%+05d\n", this.accumulator);
     System.out.printf("instructionCounter\t   %02d\n", this.instructionCounter);
     System.out.printf("instructionRegister\t%+05d\n", this.instructionRegister);
     System.out.printf("operationCode\t\t   %02d\n", this.opcode);
     System.out.printf("operand\t\t\t   %02d\n", this.operand);
-
-    System.out.println();
-
-    this.memRef.dump();
   }
 
-  /*public void loadProgram(int program[]) {
-    for (int i = 0; i < program.length-1; i++) {
-      this.memRef.set(i, program[i]);
-    }
-  }*/
-
-  public void storeInMemory(int index, int istruction) {
-    this.memRef.set(index, istruction);
-  }
-
-  public void run() {
+  public void run()
+  {
     Boolean halt = false;
 
     while (!halt) {
@@ -61,7 +47,8 @@ public class Cpu
     }
   }
 
-  public void fetch() {
+  public void fetch()
+  {
     this.instructionRegister = this.memRef.get(this.instructionCounter);
     this.opcode = this.instructionRegister / 100;
     this.operand = this.instructionRegister % 100;
@@ -69,13 +56,14 @@ public class Cpu
     this.instructionCounter++;
   }
 
-  public Boolean execute() {
+  public Boolean execute()
+  {
     Boolean halt = false;
 
     switch (this.opcode) {
       case OpCodes.READ:
         System.out.print("Enter an integer\n\t? ");
-        this.memRef.set(this.operand, this.keyboard.nextInt());
+        this.memRef.set(this.operand, this.simpletronRef.readFromStdin());
         break;
       case OpCodes.WRITE:
       System.out.printf("--> %d\n", this.memRef.get(this.operand));
