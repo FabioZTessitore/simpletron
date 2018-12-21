@@ -20,6 +20,16 @@ public class Simpletron
     keyboard = new Scanner(System.in);
   }
 
+  public void welcome()
+  {
+    System.out.println("*** Welcome to Simpletron! ***");
+    System.out.println("*** Please enter your program one istruction    ***");
+    System.out.println("*** (or data word) at a time. I will display    ***");
+    System.out.println("*** the location number and a question mark (?) ***");
+    System.out.println("*** You the type the word for that location.    ***");
+    System.out.println("*** Type -99999 to stop entering your program.  ***\n\n");    
+  }
+
   public void enterProgram()
   {
     int istruction = -1;
