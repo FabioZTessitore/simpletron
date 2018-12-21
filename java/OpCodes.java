@@ -1,4 +1,4 @@
-package cpu;
+package com.fzt.app.simpletron.cpu;
 
 public class OpCodes {
   public static final int READ = 10;

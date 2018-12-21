@@ -1,4 +1,4 @@
-package memory;
+package com.fzt.app.simpletron;
 
 import java.util.Arrays;
 

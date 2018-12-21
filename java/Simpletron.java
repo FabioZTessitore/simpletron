@@ -1,9 +1,9 @@
-package simpletron;
+package com.fzt.app.simpletron;
 
 import java.util.Scanner;
 
-import cpu.Cpu;
-import memory.Memory;
+import com.fzt.app.simpletron.cpu.Cpu;
+import com.fzt.app.simpletron.Memory;
 
 public class Simpletron
 {

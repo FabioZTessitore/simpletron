@@ -1,4 +1,6 @@
-import simpletron.Simpletron;
+package com.fzt.app.simpletron;
+
+import com.fzt.app.simpletron.Simpletron;
 
 public class SimpletronApp
 {

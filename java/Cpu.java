@@ -1,8 +1,8 @@
-package cpu;
+package com.fzt.app.simpletron.cpu;
 
-import simpletron.Simpletron;
-import cpu.OpCodes;
-import memory.Memory;
+import com.fzt.app.simpletron.Simpletron;
+import com.fzt.app.simpletron.cpu.OpCodes;
+import com.fzt.app.simpletron.Memory;
 
 public class Cpu
 {
